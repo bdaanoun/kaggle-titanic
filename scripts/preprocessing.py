@@ -39,14 +39,6 @@ def preprocess(train_df, test_df):
 
     embarked_mode = train_df["Embarked"].mode()[0]
 
-    # print("age median:", train_df["Age"].isna().sum())
-
-    # for df in [train_df, test_df]:
-    #     df["AgeGroup"] = pd.cut(df["Age"], bins=[0, 12, 18, 60, 100], labels=[0,1,2,3])
-
-    # train_df.drop("Age", axis=1, inplace=True)
-    # test_df.drop("Age", axis=1, inplace=True)
-
     train_df["Embarked"] = train_df["Embarked"].fillna(embarked_mode)
     test_df["Embarked"] = test_df["Embarked"].fillna(embarked_mode)
 
