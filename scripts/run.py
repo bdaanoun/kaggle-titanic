@@ -6,6 +6,9 @@ from predict import make_submission
 # load data
 train_df, test_df = load_data()
 
+# save PassengerId before preprocessing drops it
+passenger_ids = test_df["PassengerId"].copy()
+
 # preprocess
 train_df, test_df = preprocess(train_df, test_df)
 
@@ -17,4 +20,4 @@ y = train_df["Survived"]
 model = train_model(X, y)
 
 # predict + submission
-make_submission(model, test_df)
+make_submission(model, test_df, passenger_ids)
